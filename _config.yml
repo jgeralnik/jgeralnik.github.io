@@ -7,6 +7,10 @@ authors:
     github: true
     twitter: true
 
+plugins:
+  - jekyll-gist
+  - jekyll-paginate
+
 description: "CTF writeups"
 baseurl: ""
 
