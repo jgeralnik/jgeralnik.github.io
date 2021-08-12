@@ -10,7 +10,7 @@ In this challenge we are given shell access to a system and need to access the f
 
 We start with a Dockerfile where the kernel was compiled:
 
-```
+```docker
 RUN mkdir /initrd
 RUN mkdir /initrd/dev /initrd/root /initrd/bin
 
@@ -21,7 +21,7 @@ COPY src/flag /initrd/
 
 Inside of kernel/kconfig we find
 
-```
+```make
 CONFIG_INITRAMFS_SOURCE="/initrd"
 ```
 
@@ -60,7 +60,7 @@ If not for the mount --move we would just have to escape a chroot. Escaping chro
 
 Let's say we have a folder /root that we chroot into. We can create a new chroot while keeping a reference to our root directory, and then go back up a level:
 
-```
+```console
 / # mkdir /root
 / # cp -r /bin/ /usr /root
 / # chroot /root/
@@ -148,7 +148,7 @@ out:
 
 We upload it to the server and give it a go:
 
-```
+```console
 / # chmod +x win
 / # ./win
 / # ./bin/busybox ls
